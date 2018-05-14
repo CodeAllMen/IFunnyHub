@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>ifunny</title>
+  <!-- <meta name="viewport" content="width=device-width,initial-scale=1"> -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
+  <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../static/css/font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="shortcut icon" href="../static/img/www.ico.la_c89eced94b5e55e0d8b87d187347e8ac_32X32.ico" type="image/x-icon"/>
+  <link href="../static/css/video-js.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="../static/css/index.css">
+</head>
+<body>
+  <header>
+    <div  class="head">
+      <div class="container">      
+        <a class="logo col-xs-3">
+          <img src="../static/img/logo.png">
+        </a>         
+        <div class="head_log"> 
+          <!-- <p id="getIp">{{.IP}}</p>
+          <div class="user_cont" id="user_cont">
+            <p id="username">{{.NAME}}</p>
+            <div class="dropdown">
+              <a type="button" data-toggle="dropdown" id="dropdown1" aria-haspopup="true" aria-expanded="true">
+                <i class="fa fa-caret-down"></i> 
+              </a>
+              <ul class="dropdown-menu dropdown-menu-right">
+                <li><a id="changePwd" data-toggle="modal" data-target="#myChangePwd" ><i class="fa fa-cog"></i>Setting</a></li>
+                <li><a id="signout"><i class="fa fa-sign-out"></i>Sign Out</a></li>
+              </ul>
+            </div>
+          </div> -->
+          
+         <!--  <div class="modal fade" tabindex="-1" role="dialog" id="myChangePwd">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                  <h5 class="modal-title text-center font-weight">Change Password</h5>
+                    <form class="col-md-10 col-md-offset-1 col-xs-12">
+                      <input class="userMsg col-md-12 col-xs-12" type="text" placeholder="New Password" id="newPwd"/>
+                      <input class="userMsg col-md-12 col-xs-12" type="email" placeholder="Confirm New Password" id="confirmPwd"/>
+                      <button class="col-md-12 col-xs-12 btn btn-rose" style="margin-bottom: 40px;" data-dismiss="modal" onClick="changepassword()">Update</button>
+                    </form>               
+                </div>                
+              </div>
+            </div>
+          </div>
+ -->
+          <!-- sign up  modal-->
+          <a data-toggle="modal" data-target="#myLogin" id="login"> sign up </a>
+          <div class="modal fade" tabindex="-1" role="dialog" id="myLogin">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                  <h5 class="modal-title text-center font-weight">Login or sign up to comment</h5>
+                  <form class="col-md-10 col-md-offset-1 col-xs-12">
+                    <input class="userMsg col-md-12 col-xs-12" type="text" id="loginuser" placeholder="Username" />
+                    <input type="password" id="loginpwd" placeholder="Password"  class="userMsg col-md-12 col-xs-12" />
+                    <div class="col-xs-12">
+                      <input type="radio">Remember Password
+                    </div> 
+                    <div class="col-md-6 col-xs-6 login_btn">
+                      <button class="btn btn-yellow" data-dismiss="modal" id="loginbtn" onClick="getLogin()">LOGIN</button>
+                    </div>                   
+                    <div class="col-md-6 col-xs-6 login_btn text-right">
+                      <button class="btn btn-green" data-dismiss="modal" id="subscribe" onClick="getLogin()">SUBSCRIBE</button>
+                    </div> 
+                  </form>  
+                  <div class="jump col-md-10 col-md-offset-1 col-xs-12 text-center">
+                    <a href="" class="font_gray" data-dismiss="modal" >Forgot Password? Click here</a>
+                  </div>
+                </div>                
+              </div>
+            </div>
+          </div>
+         
+
+          <a data-toggle="modal" data-target="#mySignup" id="sign"> sign in </a>
+        <!--   <div class="modal fade" tabindex="-1" role="dialog" id="mySignup">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>                  
+                </div>
+                <div class="modal-body">
+                  <h5 class="modal-title text-center font-weight">Login or sign up to comment</h5>
+                  <form class="col-md-6 col-xs-12">
+                    <input class="userMsg col-md-12 col-xs-12" type="text" placeholder="Username" id="signUser"/>
+                    <input class="userMsg col-md-12 col-xs-12" type="email" placeholder="Email" id="signEmail"/>
+                    
+                    <input type="password" placeholder="Password"  class="userMsg col-md-12 col-xs-12" id="signpwd"/>
+                    <input class="userMsg col-md-12 col-xs-12" type="password" placeholder="Confirm Password" id="signConfirmPwd" />
+                    <div class="col-md-12">
+                      <input type="radio" checked id="signradio">I accept terms and conditions
+                    </div>                    
+                    <button class="col-md-12 col-xs-12 btn btn-rose" data-dismiss="modal" id="subSign" onClick="subSignUp()">Sign Up</button>
+                    <div class="jump col-md-12 col-xs-12 text-center">
+                      <a class="font_gray" data-dismiss="modal"  id="signloginbtn" >Login</a>
+                    </div>
+                  </form>
+                  <div class="col-md-5 col-xs-12 right_content">
+                    <div class="modal_right">
+                      <h4>Safe and Secure</h4>
+                      <i></i>
+                      <ul>
+                        <li>We will never send you spam</li>
+                        <li>We will keep your details safe and private</li>
+                      </ul>
+                    </div>
+                  </div>                                   
+                </div>                
+              </div>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+    <div class="head_title">
+      <div class="container">
+          <ul class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+            <li role="presentation" class="active col-xs-2">
+              <a href="#" class="home" id="home">
+                <i class="icon_h"></i>
+                <b>HOME </b>
+              </a>
+            </li>
+            <li role="presentation" class="active col-xs-2">
+              <a href="#" class="videos" id="videos">
+                <i class="icon_v"></i>
+                <b>VIDEOS </b>
+              </a>
+            </li>
+            <li role="presentation" class="active col-xs-2">
+              <a href="#" class="pictures" id="pictures">
+                <i class="icon_p"></i> 
+                 <b>PICTURES </b>
+              </a>
+            </li>
+            <li role="presentation" class="active col-xs-2">
+              <a href="#" class="wall" id="wall">
+                <i class="icon_w"></i>
+                <b>WALLPAPERS </b>                 
+              </a>
+            </li>
+            <li role="presentation" class="active col-xs-2">
+              <a href="#" class="ring" id="ring">
+                <i class="icon_r"></i>
+                <b>RINGTONES </b>                 
+              </a>
+            </li>
+            <li role="presentation" class="active col-xs-2">
+              <a href="#" class="games" id="games">
+                <i class="icon_g"></i>
+                <b>GAMES </b>                 
+              </a>
+            </li> 
+          </ul>
+      </div>
+    </div>   
+  </header>
+  <body>
+    <!-- // index page -->
+    <div class="container hide" id="home_content">
+      <div class="form-group has-yellow has-feedback search_icon">
+        <div class="input-group">
+          <input type="text" class="form-control" placehodler="serach"  id="index_search"/>
+          <span class="input-group-addon"><i class="fa fa-search"></i></span>
+        </div>            
+      </div>
+      <div class="title">                         
+          <select class="sec_drop col-md-2 col-xs-4" id="index_sec">
+            <option value="time"> All Funny</option>
+            <option value="play"> Top Rated</option>
+            <option value="rate"> Animals</option>
+            <option value="likes"> Fail</option>
+            <option value="period"> Weird</option>
+            <option value="rate"> Celebrity</option>
+            <option value="likes"> Cool</option>
+            <option value="period"> Gross</option>
+            <option value="likes"> Cartoons</option>
+            <option value="period"> Sign</option>             
+          </select>
+          <p class="text-right font_gray">Approximately 50,000 results</p>  
+      </div>
+      <div class="content" id="index_bottom">
+        <div class="col-xs-4 show_content">
+          <div class="index_img">
+            <img src="../static/img/home.jpg">
+            <div class="img_text">
+              <small>Opinions</small>
+              <small><i class="fa fa-eye"></i> 3376</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-4 show_content">
+          <div class="index_img">
+            <img src="../static/img/home.jpg">
+            <div class="img_text">
+              <small>Congressman blows up over...</small>
+              <small><i class="fa fa-eye"></i> 3376</small>
+            </div>
+          </div>
+        </div> 
+        <div class="col-xs-4 show_content">
+          <div class="index_img">
+            <img src="../static/img/home.jpg">
+          </div>
+        </div> 
+        <div class="col-xs-4 show_content">
+          <div class="index_img">
+            <img src="../static/img/home.jpg">
+          </div>
+        </div> 
+        <div class="col-xs-4 show_content">
+          <div class="index_img">
+            <img src="../static/img/home.jpg">
+            <div class="img_text">
+              <small>Opinions</small>
+              <small><i class="fa fa-eye"></i> 3376</small>
+            </div>
+          </div>
+        </div> 
+        <div class="col-xs-4 show_content">
+          <div class="index_img">
+            <img src="../static/img/home.jpg">
+            <div class="img_text">
+              <small>Opinions</small>
+              <small><i class="fa fa-eye"></i> 3376</small>
+            </div>
+          </div>
+        </div>         
+      </div>
+      <!-- turn page in home page   -->
+      <div class="pager col-xs-12">        
+        <a name="prev" id="index_prev" class="disabled" style="cursor: default;"><i class="fa fa-caret-left"></i></a>
+        <span name="nav" id="index_nav" class="pagenum" style="cursor: pointer;">
+          <a class="navi"><span class="page_num">1</span></a>
+        </span>
+        <a name="next" id="index_next"  class="" style="cursor: pointer;"><i class="fa fa-caret-right"></i></a>
+        <a name="last" id="index_last"  class="" style="cursor: pointer;">LAST</a>
+        <input name="goNum" id="goNumIndex" class="cssTxt hide" type="text" size="1" />
+      </div>
+    </div>
+
+    <!-- // videos content -->
+    <div class="container hide" id="videos_content">
+      <div class="form-group has-yellow has-feedback search_icon">
+        <div class="input-group">
+          <input type="text" class="form-control" placehodler="serach" id="videos_search"/>
+          <span class="input-group-addon"><i class="fa fa-search"></i></span>
+        </div>            
+      </div>
+      <div class="title">                         
+          <select class="sec_drop col-md-2 col-xs-4" id="videos_sec">
+            <option value="time"> All Funny</option>
+            <option value="play"> Top Rated</option>
+            <option value="rate"> Animals</option>
+            <option value="likes"> Fail</option>
+            <option value="period"> Weird</option>
+            <option value="rate"> Celebrity</option>
+            <option value="likes"> Cool</option>
+            <option value="period"> Gross</option>
+            <option value="likes"> Cartoons</option>
+            <option value="period"> Sign</option>             
+          </select>
+          <p class="text-right font_gray">Approximately 50,000 results</p>  
+      </div>
+      <div class="content" id="videos_bottom">
+        <div class="col-xs-4 show_content">
+          <div class="index_img">
+            <img src="../static/img/home.jpg">
+            <div class="img_text">
+              <small>Opinions</small>
+              <small><i class="fa fa-eye"></i> 3376</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-4 show_content">
+          <div class="index_img">
+            <img src="../static/img/home.jpg">
+            <div class="img_text">
+              <small>Congressman blows up over...</small>
+              <small><i class="fa fa-eye"></i> 3376</small>
+            </div>
+          </div>
+        </div> 
+        <div class="col-xs-4 show_content">
+          <div class="index_img">
+            <img src="../static/img/home.jpg">
+          </div>
+        </div> 
+        <div class="col-xs-4 show_content">
+          <div class="index_img">
+            <img src="../static/img/home.jpg">
+          </div>
+        </div> 
+        <div class="col-xs-4 show_content">
+          <div class="index_img">
+            <img src="../static/img/home.jpg">
+            <div class="img_text">
+              <small>Opinions</small>
+              <small><i class="fa fa-eye"></i> 3376</small>
+            </div>
+          </div>
+        </div>      
+      </div>
+      <!-- turn page in videos page   -->
+      <div class="pager col-xs-12">        
+        <a name="prev" id="videos_prev" class="disabled" style="cursor: default;"><i class="fa fa-caret-left"></i></a>
+        <span name="nav" id="videos_nav" class="pagenum" style="cursor: pointer;">
+          <a class="navi"><span class="page_num">1</span></a>
+        </span>
+        <a name="next" id="videos_next"  class="" style="cursor: pointer;"><i class="fa fa-caret-right"></i></a>
+        <a name="last" id="videos_last"  class="" style="cursor: pointer;">LAST</a>
+        <input name="goNum" id="goNumVideos" class="cssTxt hide" type="text" size="1" />
+      </div>
+    </div>
+
+    <!-- // wall content -->
+    <div class="container hide" id="wall_content">  
+      <div class="form-group has-yellow has-feedback search_icon">
+        <div class="input-group">
+          <input type="text" class="form-control" placehodler="serach"  id="wall_search"/>
+          <span class="input-group-addon"><i class="fa fa-search"></i></span>
+        </div>            
+      </div>
+      <div class="title">                         
+          <select class="sec_drop col-md-2 col-xs-4" id="wall_sec">
+            <option value="time"> All Funny</option>
+            <option value="play"> Top Rated</option>
+            <option value="rate"> Animals</option>
+            <option value="likes"> Fail</option>
+            <option value="period"> Weird</option>
+            <option value="rate"> Celebrity</option>
+            <option value="likes"> Cool</option>
+            <option value="period"> Gross</option>
+            <option value="likes"> Cartoons</option>
+            <option value="period"> Sign</option>             
+          </select>
+          <p class="text-right font_gray">Approximately 50,000 results</p>  
+      </div>
+      <div class="content" id="wall_bottom">
+        <div class="col-xs-4 show_content">
+          <div class="index_img">
+            <img src="../static/img/home.jpg">
+            <div class="img_text">
+              <small>Opinions</small>
+              <small><i class="fa fa-eye"></i> 3376</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-4 show_content">
+          <div class="index_img">
+            <img src="../static/img/home.jpg">
+            <div class="img_text">
+              <small>Congressman blows up over...</small>
+              <small><i class="fa fa-eye"></i> 3376</small>
+            </div>
+          </div>
+        </div>        
+        <div class="col-xs-4 show_content">
+          <div class="index_img">
+            <img src="../static/img/home.jpg">
+            <div class="img_text">
+              <small>Congressman blows up over...</small>
+              <small><i class="fa fa-eye"></i> 3376</small>
+            </div>
+          </div>
+        </div> 
+        <div class="col-xs-4 show_content">
+          <div class="index_img">
+            <img src="../static/img/home.jpg">
+            <div class="img_text">
+              <small>Opinions</small>
+              <small><i class="fa fa-eye"></i> 3376</small>
+            </div>
+          </div>
+        </div>               
+        <div class="col-xs-4 show_content">
+          <div class="index_img">
+            <img src="../static/img/home.jpg">
+            <div class="img_text">
+              <small>Opinions</small>
+              <small><i class="fa fa-eye"></i> 3376</small>
+            </div>
+          </div>
+        </div>                        
+      </div>
+      <!-- turn page in wall page   -->
+      <div class="pager col-xs-12">        
+        <a name="prev" id="wall_prev" class="disabled" style="cursor: default;"><i class="fa fa-caret-left"></i></a>
+        <span name="nav" id="wall_nav" class="pagenum" style="cursor: pointer;">
+          <a class="navi"><span class="page_num">1</span></a>
+        </span>
+        <a name="next" id="wall_next"  class="" style="cursor: pointer;"><i class="fa fa-caret-right"></i></a>
+        <a name="last" id="wall_last"  class="" style="cursor: pointer;">LAST</a>
+        <input name="goNum" id="goNumWall" class="cssTxt hide" type="text" size="1" />
+      </div>
+    </div>
+
+    <!-- // ring content -->
+    <div class="container hide" id="ring_content">  
+      <div class="form-group has-yellow has-feedback search_icon">
+        <div class="input-group">
+          <input type="text" class="form-control" placehodler="serach" id="ring_search"/>
+          <span class="input-group-addon"><i class="fa fa-search"></i></span>
+        </div>            
+      </div>
+      <div class="title">                         
+          <select class="sec_drop col-md-2 col-xs-4" id="ring_sec">
+            <option value="time"> All Funny</option>
+            <option value="play"> Top Rated</option>
+            <option value="rate"> Animals</option>
+            <option value="likes"> Fail</option>
+            <option value="period"> Weird</option>
+            <option value="rate"> Celebrity</option>
+            <option value="likes"> Cool</option>
+            <option value="period"> Gross</option>
+            <option value="likes"> Cartoons</option>
+            <option value="period"> Sign</option>             
+          </select>
+          <p class="text-right font_gray">Approximately 50,000 results</p>  
+      </div>
+      <div class="content" id="ring_bottom">
+        <div class="col-md-3 col-xs-6">
+          <div class="rings">
+            <div class="col-xs-3 col-md-3 rings_left">
+               <img src="../static/img/mp3_s.jpg">
+            </div>           
+            <div class="col-xs-9 col-md-9 rings_right">
+              <small class="sm_top">Congressman blows up over...</small>
+              <small class="sm_bot"><i class="fa fa-caret-right fa-1"></i> Play</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-xs-6">
+          <div class="rings">
+            <div class="col-xs-3 col-md-3 rings_left">
+               <img src="../static/img/mp3_s.jpg">
+            </div>           
+            <div class="col-xs-9 col-md-9 rings_right">
+              <small class="sm_top">Congressman blows up over...</small>
+              <small class="sm_bot"><i class="fa fa-caret-right fa-1"></i> Play</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-xs-6">
+          <div class="rings">
+            <div class="col-xs-3 col-md-3 rings_left">
+               <img src="../static/img/mp3_s.jpg">
+            </div>           
+            <div class="col-xs-9 col-md-9 rings_right">
+              <small class="sm_top">Congressman blows up over...</small>
+              <small class="sm_bot"><i class="fa fa-caret-right fa-1"></i> Play</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-xs-6">
+          <div class="rings">
+            <div class="col-xs-3 col-md-3 rings_left">
+               <img src="../static/img/mp3_s.jpg">
+            </div>           
+            <div class="col-xs-9 col-md-9 rings_right">
+              <small class="sm_top">Congressman blows up over...</small>
+              <small class="sm_bot"><i class="fa fa-caret-right fa-1"></i> Play</small>
+            </div>
+          </div>
+        </div>                    
+      </div>
+      <!-- turn page in ringtones page   -->
+      <div class="pager col-xs-12">        
+        <a name="prev" id="ring_prev" class="disabled" style="cursor: default;"><i class="fa fa-caret-left"></i></a>
+        <span name="nav" id="ring_nav" class="pagenum" style="cursor: pointer;">
+          <a class="navi"><span class="page_num">1</span></a>
+        </span>
+        <a name="next" id="ring_next"  class="" style="cursor: pointer;"><i class="fa fa-caret-right"></i></a>
+        <a name="last" id="ring_last"  class="" style="cursor: pointer;">LAST</a>
+        <input name="goNum" id="goNumRing" class="cssTxt hide" type="text" size="1" />
+      </div>
+    </div>
+
+    <!-- // games content -->
+    <div class="container hide" id="games_content">  
+      <div class="form-group has-yellow has-feedback search_icon">
+        <div class="input-group">
+          <input type="text" class="form-control" placehodler="serach" id="games_search"/>
+          <span class="input-group-addon"><i class="fa fa-search"></i></span>
+        </div>            
+      </div>
+      <div class="title">                         
+          <select class="sec_drop col-md-2 col-xs-4" id="games_sec">
+            <option value="time"> All Funny</option>
+            <option value="play"> Top Rated</option>
+            <option value="rate"> Animals</option>
+            <option value="likes"> Fail</option>
+            <option value="period"> Weird</option>
+            <option value="rate"> Celebrity</option>
+            <option value="likes"> Cool</option>
+            <option value="period"> Gross</option>
+            <option value="likes"> Cartoons</option>
+            <option value="period"> Sign</option>             
+          </select>
+          <p class="text-right font_gray">Approximately 50,000 results</p>  
+      </div>
+      <div class="content" id="wall_bottom">
+        <div class="col-xs-4 show_content">
+          <div class="index_img">
+            <img src="../static/img/home.jpg">
+            <div class="img_text">
+              <small>Opinions</small>
+              <small><i class="fa fa-eye"></i> 3376</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-4 show_content">
+          <div class="index_img">
+            <img src="../static/img/home.jpg">
+            <div class="img_text">
+              <small>Congressman blows up over...</small>
+              <small><i class="fa fa-eye"></i> 3376</small>
+            </div>
+          </div>
+        </div>        
+        <div class="col-xs-4 show_content">
+          <div class="index_img">
+            <img src="../static/img/home.jpg">
+            <div class="img_text">
+              <small>Congressman blows up over...</small>
+              <small><i class="fa fa-eye"></i> 3376</small>
+            </div>
+          </div>
+        </div> 
+        <div class="col-xs-4 show_content">
+          <div class="index_img">
+            <img src="../static/img/home.jpg">
+            <div class="img_text">
+              <small>Opinions</small>
+              <small><i class="fa fa-eye"></i> 3376</small>
+            </div>
+          </div>
+        </div>               
+        <div class="col-xs-4 show_content">
+          <div class="index_img">
+            <img src="../static/img/home.jpg">
+            <div class="img_text">
+              <small>Opinions</small>
+              <small><i class="fa fa-eye"></i> 3376</small>
+            </div>
+          </div>
+        </div>                        
+      </div>
+      <!-- turn page in games page   -->
+      <div class="pager col-xs-12">        
+        <a name="prev" id="games_prev" class="disabled" style="cursor: default;"><i class="fa fa-caret-left"></i></a>
+        <span name="nav" id="games_nav" class="pagenum" style="cursor: pointer;">
+          <a class="navi"><span class="page_num">1</span></a>
+        </span>
+        <a name="next" id="games_next"  class="" style="cursor: pointer;"><i class="fa fa-caret-right"></i></a>
+        <a name="last" id="games_last"  class="" style="cursor: pointer;">LAST</a>
+        <input name="goNum" id="goNumGames" class="cssTxt hide" type="text" size="1" />
+      </div>
+    </div>
+    <!-- games details -->
+    <div class="container details_content hide" id="game_details">
+      <div class="details_left col-md-10 col-xs-12">
+        <div class="col-md-12 col-xs-12">
+          <img src="../static/img/game_big.jpg">
+        </div>
+        <div class="col-md-4 col-xs-4 img_sm">
+          <img src="../static/img/g1.jpg">
+        </div>
+        <div class="col-md-4 col-xs-4 img_sm">
+          <img src="../static/img/g1.jpg">
+        </div>
+        <div class="col-md-4 col-xs-4 img_sm">
+          <img src="../static/img/g1.jpg">
+        </div>
+        <div class="img_text col-md-12 col-xs-12">
+          <h5>Siri Reads A Message From Mom</h5>
+          <div class="col-md-8 col-xs-8">
+            <p class="font_gray"><span>Added</span><b>2017-06-03</b></p>
+            <p class="font_gray"><span>Category</span><b>cool</b></p>
+          </div>
+          <div class="col-md-4 col-xs-4 text-right">
+            <a class="btn btn-blue"><b>Play Now</b></a>
+          </div>
+        </div>        
+      </div>
+      <div class="details_right col-md-2 col-xs-12">
+        <div class="detail_btn col-md-12 col-xs-6">
+          <a class="col-md-8 col-md-offset-2 col-xs-5 btn btn-yellow"><b>Back</b></a>
+          <a class="col-md-8 col-md-offset-2 col-xs-5 btn btn-yellow"><b>Next</b></a>
+        </div>
+        <div class="likes_icon col-md-12 col-xs-6">
+          <div class="like_up col-md-6 col-md-offset-3 col-xs-5">
+            <img class="col-xs-5" src="../static/img/up.png">
+            <h4 class="text-center col-xs-5">15</h4>
+          </div>
+          <div class="like_down col-md-6 col-md-offset-3 col-xs-5">
+            <img class="col-xs-5" src="../static/img/down.png">
+            <h4 class="text-center">7</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-10 col-xs-12 img_bottom ">
+          <h6>You May Like</h6>
+          <div class="col-md-3 col-xs-6">
+            <div class="img_likes">
+              <div>
+                <img src="../static/img/game_pic.jpg">
+              </div>
+              <div class="likes_name">
+                <p>Finally You Can Track Your Car Using Your Smartphone</p>
+                <p class="font_gray">
+                  <span>1378</span>Browse
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-xs-6">
+            <div class="img_likes">
+              <div>
+                <img src="../static/img/game_pic.jpg">
+              </div>
+              <div class="likes_name">
+                <p>Finally You Can Track Your Car Using Your Smartphone</p>
+                <p class="font_gray">
+                  <span>1378</span>Browse
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-xs-6">
+            <div class="img_likes">
+              <div>
+                <img src="../static/img/game_pic.jpg">
+              </div>
+              <div class="likes_name">
+                <p>Finally You Can Track Your Car Using Your Smartphone</p>
+                <p class="font_gray">
+                  <span>1378</span>Browse
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-xs-6">
+            <div class="img_likes">
+              <div>
+                <img src="../static/img/game_pic.jpg">
+              </div>
+              <div class="likes_name">
+                <p>Finally You Can Track Your Car Using Your Smartphone</p>
+                <p class="font_gray">
+                  <span>1378</span>Browse
+                </p>
+              </div>
+            </div>
+          </div>          
+        </div>
+    </div>
+
+    <!-- videos details -->
+    <div class="container details_content hide" id="videos_details">
+      <div class="details_left col-md-10 col-xs-12">
+        <div class="col-md-12 col-xs-12">
+          <video style="margin: 0 auto;" id="my-video" class="video-js vjs-default-skin vjs-big-play-centered " controls preload="auto" poster="../static/img/videos.jpg" data-setup="{}" ><source src="../static/img/test.mp4" type="video/mp4" /></video>
+        </div>       
+        <div class="img_text col-md-12 col-xs-12">
+          <h5>Siri Reads A Message From Mom</h5>
+          <div class="col-md-8 col-xs-8">
+            <p class="font_gray"><span>Added</span><b>2017-06-03</b></p>
+            <p class="font_gray"><span>Category</span><b>cool</b></p>
+          </div>     
+        </div>        
+      </div>
+      <div class="details_right col-md-2 col-xs-12">
+        <div class="detail_btn col-md-12 col-xs-6">
+          <a class="col-md-8 col-md-offset-2 col-xs-5 btn btn-yellow"><b>Back</b></a>
+          <a class="col-md-8 col-md-offset-2 col-xs-5 btn btn-yellow"><b>Next</b></a>
+        </div>
+        <div class="likes_icon col-md-12 col-xs-6">
+          <div class="like_up col-md-6 col-md-offset-3 col-xs-5">
+            <img class="col-xs-5" src="../static/img/up.png">
+            <h4 class="text-center col-xs-5">15</h4>
+          </div>
+          <div class="like_down col-md-6 col-md-offset-3 col-xs-5">
+            <img class="col-xs-5" src="../static/img/down.png">
+            <h4 class="text-center">7</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-10 col-xs-12 img_bottom ">
+          <h6>You May Like</h6>
+          <div class="col-md-3 col-xs-6">
+            <div class="img_likes">
+              <div>
+                <img src="../static/img/game_pic.jpg">
+              </div>
+              <div class="likes_name">
+                <p>Finally You Can Track Your Car Using Your Smartphone</p>
+                <p class="font_gray">
+                  <span>1378</span>Browse
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-xs-6">
+            <div class="img_likes">
+              <div>
+                <img src="../static/img/game_pic.jpg">
+              </div>
+              <div class="likes_name">
+                <p>Finally You Can Track Your Car Using Your Smartphone</p>
+                <p class="font_gray">
+                  <span>1378</span>Browse
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-xs-6">
+            <div class="img_likes">
+              <div>
+                <img src="../static/img/game_pic.jpg">
+              </div>
+              <div class="likes_name">
+                <p>Finally You Can Track Your Car Using Your Smartphone</p>
+                <p class="font_gray">
+                  <span>1378</span>Browse
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-xs-6">
+            <div class="img_likes">
+              <div>
+                <img src="../static/img/game_pic.jpg">
+              </div>
+              <div class="likes_name">
+                <p>Finally You Can Track Your Car Using Your Smartphone</p>
+                <p class="font_gray">
+                  <span>1378</span>Browse
+                </p>
+              </div>
+            </div>
+          </div>          
+        </div>
+    </div>
+
+    <!-- pictures details -->
+    <div class="container details_content" id="pictures_details">
+      <div class="details_left col-md-10 col-xs-12">
+        <div class="col-md-12 col-xs-12 text-center">
+          <img class="pic_img" src="../static/img/pic.jpg">
+        </div>        
+        <div class="img_text col-md-12 col-xs-12">
+          <h5>Siri Reads A Message From Mom</h5>
+          <div class="col-md-8 col-xs-8">
+            <p class="font_gray"><span>Added</span><b>2017-06-03</b></p>
+            <p class="font_gray"><span>Category</span><b>cool</b></p>
+          </div>
+          <div class="col-md-4 col-xs-4 text-right">
+            <a class="btn"><i class="fa fa-cloud-download"></i><small>Download</small></a>
+          </div>
+        </div>        
+      </div>
+      <div class="details_right col-md-2 col-xs-12">
+        <div class="detail_btn col-md-12 col-xs-6">
+          <a class="col-md-8 col-md-offset-2 col-xs-5 btn btn-yellow"><b>Back</b></a>
+          <a class="col-md-8 col-md-offset-2 col-xs-5 btn btn-yellow"><b>Next</b></a>
+        </div>
+        <div class="likes_icon col-md-12 col-xs-6">
+          <div class="like_up col-md-6 col-md-offset-3 col-xs-5">
+            <img class="col-xs-5" src="../static/img/up.png">
+            <h4 class="text-center col-xs-5">15</h4>
+          </div>
+          <div class="like_down col-md-6 col-md-offset-3 col-xs-5">
+            <img class="col-xs-5" src="../static/img/down.png">
+            <h4 class="text-center">7</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-10 col-xs-12 img_bottom ">
+          <h6>You May Like</h6>
+          <div class="col-md-3 col-xs-6">
+            <div class="img_likes">
+              <div>
+                <img src="../static/img/game_pic.jpg">
+              </div>
+              <div class="likes_name">
+                <p>Finally You Can Track Your Car Using Your Smartphone</p>
+                <p class="font_gray">
+                  <span>1378</span>Browse
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-xs-6">
+            <div class="img_likes">
+              <div>
+                <img src="../static/img/game_pic.jpg">
+              </div>
+              <div class="likes_name">
+                <p>Finally You Can Track Your Car Using Your Smartphone</p>
+                <p class="font_gray">
+                  <span>1378</span>Browse
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-xs-6">
+            <div class="img_likes">
+              <div>
+                <img src="../static/img/game_pic.jpg">
+              </div>
+              <div class="likes_name">
+                <p>Finally You Can Track Your Car Using Your Smartphone</p>
+                <p class="font_gray">
+                  <span>1378</span>Browse
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-xs-6">
+            <div class="img_likes">
+              <div>
+                <img src="../static/img/game_pic.jpg">
+              </div>
+              <div class="likes_name">
+                <p>Finally You Can Track Your Car Using Your Smartphone</p>
+                <p class="font_gray">
+                  <span>1378</span>Browse
+                </p>
+              </div>
+            </div>
+          </div>          
+        </div>
+    </div>
+
+
+
+
+  </body>  
+</body>
+  <script src="../static/js/jquery.min.js"></script>
+  <script src="../static/js/video.min.js"></script>
+  <script src="../static/js/videojs-ie8.min.js"></script>
+  <script src="../static/js/jquery.pagination.js"></script>
+  <script src="../static/js/bootstrap.min.js"></script>
+  <!-- // <script src="../static/js/index.js"></script> -->
+
+</html>

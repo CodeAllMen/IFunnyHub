@@ -1,1 +1,1 @@
-# IFunnyHub
+# iFunnyHub

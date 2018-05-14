@@ -1,0 +1,134 @@
+
+# Gopkg.toml example
+#
+# Refer to https://github.com/golang/dep/blob/master/docs/Gopkg.toml.md
+# for detailed Gopkg.toml documentation.
+#
+# required = ["github.com/user/thing/cmd/thing"]
+# ignored = ["github.com/user/project/pkgX", "bitbucket.org/user/project/pkgA/pkgY"]
+#
+# [[constraint]]
+#   name = "github.com/user/project"
+#   version = "1.0.0"
+#
+# [[constraint]]
+#   name = "github.com/user/project2"
+#   branch = "dev"
+#   source = "github.com/myfork/project2"
+#
+# [[override]]
+#  name = "github.com/x/y"
+#  version = "2.4.0"
+
+
+[[constraint]]
+  name = "github.com/aws/aws-sdk-go"
+  version = "1.10.51"
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/bluele/gforms"
+
+[[constraint]]
+  name = "github.com/dgrijalva/jwt-go"
+  revision = "a539ee1a749a2b895533f979515ac7e6e0f5b650"
+
+[[constraint]]
+  name = "github.com/gin-gonic/gin"
+  version = "1.2.0"
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/jinzhu/configor"
+
+[[constraint]]
+  name = "github.com/jinzhu/gorm"
+  revision = "b1885a643b4977c9089d77eb07c0fd96591f94b8"
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/microcosm-cc/bluemonday"
+
+[[constraint]]
+  name = "github.com/qor/admin"
+  revision = "2808d4c3ad259a83f077392e487326e654932ad8"
+
+[[constraint]]
+  name = "github.com/qor/auth"
+  revision = "b76c477771548e706a77ee33c69f87618573278e"
+
+[[constraint]]
+  name = "github.com/qor/auth_themes"
+  revision = "74c923ca8e15de4d52146ec334d633bdecaa106f"
+
+[[constraint]]
+  name = "github.com/qor/help"
+  revision = "604bf767572754fa99c6f295e718e8078d114dd0"
+
+[[constraint]]
+  name = "github.com/qor/mailer"
+  revision = "1e6ac71069556a146390b35dea415dc1c383f430"
+
+[[constraint]]
+  name = "github.com/qor/media"
+  revision = "5e6455186ae8e0320bb24054e34cb2f0340ff7a4"
+
+[[constraint]]
+  name = "github.com/qor/middlewares"
+  revision = "781378b69454a545d08058d8154aca40d079e7ab"
+
+[[constraint]]
+  name = "github.com/qor/notification"
+  revision = "0a5a671d7a435ba225a5ce62af4b3d708ad2372b"
+
+[[constraint]]
+  name = "github.com/qor/oss"
+  revision = "cdabd64fd390d98d5aed2eb548c97221519e45ff"
+
+[[constraint]]
+  name = "github.com/qor/publish2"
+  revision = "0e146bf5a4cee33d4ad83c35241ed9b7043d085a"
+
+[[constraint]]
+  name = "github.com/qor/qor"
+  revision = "843ff6066b4fc9f723da987b670f483295f2d94e"
+
+[[constraint]]
+  name = "github.com/qor/redirect_back"
+  revision = "b4161ed6f84819fb3a2d13d5c9e6872ef76d8128"
+
+[[constraint]]
+  name = "github.com/qor/render"
+  revision = "9bc9220a811df16c414ede83b3c8d6aa65788e95"
+
+[[constraint]]
+  name = "github.com/qor/roles"
+  revision = "4b5e54326f5b13fe76cfb6206ee53f547250c700"
+
+[[constraint]]
+  name = "github.com/qor/session"
+  revision = "8206b0adab706a6ef3ee6fabba2584d34429a26a"
+
+[[constraint]]
+  name = "github.com/qor/sorting"
+  revision = "c28dca660fcc8e7612a217c2e0750a285ec01e78"
+
+[[constraint]]
+  name = "github.com/qor/validations"
+  revision = "c8be0f7b95080477388bac66d3ee4379e96a9b38"
+
+[[constraint]]
+  branch = "master"
+  name = "golang.org/x/crypto"
+
+[[constraint]]
+  branch = "master"
+  name = "golang.org/x/sync"
+
+[[constraint]]
+  name = "github.com/qor/publish"
+  revision = "76f9d81eb0efac643099d5a19b574a26155179a0"
+
+[[constraint]]
+  name = "github.com/qor/l10n"
+  version = "1.0.0"

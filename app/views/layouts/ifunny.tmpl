@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ifunny</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="shortcut icon" href="/static/img/ifunny.ico" type="image/x-icon"/>
+  <link href="/static/css/video-js.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="/static/css/index.css">
+</head>
+<body>
+  <header>
+    <div  class="head">
+      <div class="container">      
+        <a class="logo col-xs-4">
+          <img src="/static/img/logo.png">
+        </a>         
+        <div class="head_log"> 
+          {{ if current_user }}
+          <span id="username">{{current_user.Email}}</span> | <a id="signout" href="/auth/logout"><i class="fa fa-sign-out"></i>Sign Out</a></li>
+          {{else}}
+          <a href="/auth/login">signin</a>
+          {{ end }}
+          <!-- <div class="user_cont" id="user_cont">
+            <div class="dropdown">
+              <a type="button" data-toggle="dropdown" id="dropdown1" aria-haspopup="true" aria-expanded="true">
+                <i class="fa fa-caret-down"></i> 
+              </a>
+              <ul class="dropdown-menu dropdown-menu-right">
+                <li><a id="changePwd" data-toggle="modal" data-target="#myChangePwd" ><i class="fa fa-cog"></i>Setting</a></li>
+                <li><a id="signout" href="/auth/logout"><i class="fa fa-sign-out"></i>Sign Out</a></li>
+              </ul>
+            </div>
+          </div>
+          !-->
+        </div>
+      </div>
+    </div>
+    <div class="head_title">
+      <div class="container">
+          <ul class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+            <li role="presentation" class="active col-xs-2">
+              <a href="/" class="home" id="home">
+                  <i class="icon_home"></i>
+                <b>HOME</b>
+              </a>
+            </li>
+            {{ range $category := get_categories }}
+            <li role="presentation" class="active col-xs-2">
+                {{ if is_category_select $category.Code }}
+                <a href="{{printf "/category/%s" $category.Code}}" class="{{ toLower $category.Code }} select" id="{{ toLower $category.Code }}">
+                <i class="icon_{{ toLower $category.Code }}"></i>
+                {{ else }}
+                <a href="{{printf "/category/%s" $category.Code}}" class="{{ toLower $category.Code }}" id="{{ toLower $category.Code }}">
+                <i class="icon_{{ toLower $category.Code }}"></i>
+                {{ end }}
+                <b>{{ $category.Name }}</b>
+              </a>
+            </li>
+            {{ end }}
+          </ul>
+      </div>
+    </div>   
+  </header>
+  <body>
+    <div class="container">
+      <div class="form-group has-yellow has-feedback search_icon">
+      <form action="/search" method="GET">
+        <div class="input-group">
+          <input name="q" type="text" class="form-control" placehodler="serach" id="pictures_search"/>
+          <span class="input-group-addon"><button type="submit"><i class="fa fa-search"></i></button></span>
+        </div>            
+      </form>
+      </div>
+      {{ yield }}
+    </div>
+  </body>
+  <footer>
+     
+  </footer>
+</body>
+  <script src="/static/js/jquery.min.js"></script>
+  <script src="/static/js/video.min.js"></script>
+  <script src="/static/js/videojs-ie8.min.js"></script>
+  <script src="/static/js/jquery.pagination.js"></script>
+  <script src="/static/js/bootstrap.min.js"></script>
+  <script src="/static/js/index.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/4.0.0/lazysizes.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.0/masonry.pkgd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.js"></script>
+  <script>
+      $(".lazyload").each(function(){
+        $(this).on('load', function(){
+          $(".grid").masonry({
+            itemSelector: ".index_content",
+          });
+        });
+      });
+
+      {{ range flashes }}
+      $.notify("{{.Text}}", "{{.Type}}");
+      {{ end }}
+
+      var liked = false;
+      var unliked = false;
+      var $upbutton = $('.like_up');
+      var $upcounter = $('.up-vote-count');
+      $upbutton.click(function(){
+          if (!liked) {
+              $upcounter.text( parseInt($upcounter.text()) + 1 );
+              liked = true;
+          }
+      });
+
+      var $downbutton = $('.like_down');
+      var $downcounter = $('.down-vote-count');
+      $downbutton.click(function(){
+          if (!unliked) {
+              $downcounter.text( parseInt($downcounter.text()) + 1 );
+              unliked = true;
+          }
+      });
+  </script>
+
+</html>

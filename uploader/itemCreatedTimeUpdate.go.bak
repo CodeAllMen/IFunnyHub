@@ -1,0 +1,23 @@
+package main
+
+import (
+	"math/rand"
+	"time"
+
+	"github.com/NewTrident/iFunnyHub/app/models"
+	"github.com/NewTrident/iFunnyHub/db"
+)
+
+func main() {
+	items := []models.Item{}
+	db.DB.Find(&items)
+
+	for _, item := range items {
+		category := models.Category{}
+		db.DB.Where("id = ?", item.CategoryID).Find(&category)
+		item.Category = category
+		rand.Seed(time.Now().UTC().UnixNano())
+		item.CreatedAt = time.Now().UTC().Add(time.Duration(rand.Intn(5000)) * time.Second)
+		db.DB.Save(&item)
+	}
+}
