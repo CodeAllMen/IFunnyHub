@@ -1,7 +1,0 @@
-box: wercker/golang
-
-build:
-    steps:
-      - script:
-          name: Run Test
-          code: go test

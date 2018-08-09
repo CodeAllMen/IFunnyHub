@@ -1,0 +1,104 @@
+<div class="title">
+    <p class="text-right font_gray">Approximately {{.Num}} results</p>
+</div>
+<!-- video模块 -->
+<div class="b-b">
+    <p class="col-md-11 col-xs-10 font_md">VIDEOS</p>
+    <hr class="sm_line" />
+    <a href="/category/video" class="col-md-1 col-xs-2 text-right btn btn-sm btn-yellow">more
+        <span class="fa fa-caret-right"></span>
+    </a>
+</div>
+<div class="content grid">
+    {{range .Video}}
+    <a href="/category/video/item/{{.Id}}">
+        <div class="col-xs-6 show_content index_content">
+            <div class="index_img">
+                <img src="{{.Img}}" data-src="{{.Img}}" class="blur-up lazyload" onerror="this.src='//static.ifunnyhub.com/assets/loading.jpg'">
+                <div class="img_text">
+                    <small>{{.Title}}</small>
+                    <small class="num">
+                        <i class="fa fa-eye"></i> {{.Playnum}}</small>
+                </div>
+            </div>
+        </div>
+    </a>
+    {{end}}
+</div>
+
+<!-- picture模块 -->
+<div class="b-b">
+    <p class="col-md-11 col-xs-10 font_md">PICTURE</p>
+    <hr class="sm_line" />
+    <a href="/category/picture" class="col-md-1 col-xs-2 text-right btn btn-sm btn-yellow">more
+        <span class="fa fa-caret-right"></span>
+    </a>
+</div>
+<div class="content grid">
+    {{range .Picture}}
+    <a href="/category/picture/item/{{.Id}}">
+        <div class="col-xs-6 show_content index_content">
+            <div class="index_img">
+                <img src="{{.Img}}" data-src="{{.Img}}" class="blur-up lazyload" onerror="this.src='//static.ifunnyhub.com/assets/loading.jpg'">
+                <div class="img_text">
+                    <small>{{.Title}}</small>
+                    <small class="num">
+                        <i class="fa fa-eye"></i> {{.Playnum}}</small>
+                </div>
+            </div>
+        </div>
+    </a>
+    {{end}}
+</div>
+
+<!-- ringtone模块 -->
+<div class="b-b">
+    <p class="col-md-11 col-xs-10 font_md">RINGTONE</p>
+    <hr class="sm_line" />
+    <a href="/category/ringtone" class="col-md-1 col-xs-2 text-right btn btn-sm btn-yellow">more
+        <span class="fa fa-caret-right"></span>
+    </a>
+</div>
+<div class="content grid">
+    {{range .Ringtone}}
+    <a href="/category/ringtone/item/{{.Id}}">
+        <div class="col-xs-6 show_content index_content">
+            <div class="rings">
+                <div class="col-xs-3 col-md-3 rings_left">
+                    <img src="/static/img/mp3.png">
+                </div>
+                <div class="col-xs-9 col-md-9 rings_right">
+                    <small class="sm_top">{{.Title}}</small>
+                    <small class="sm_bot">
+                        <i class="fa fa-caret-right fa-1"></i> Play</small>
+                </div>
+            </div>
+        </div>
+    </a>
+    {{end}}
+</div>
+
+<!-- game模块 -->
+<div class="b-b">
+    <p class="col-md-11 col-xs-10 font_md">GAMES</p>
+    <hr class="sm_line" />
+    <a href="/category/game" class="col-md-1 col-xs-2 text-right btn btn-sm btn-yellow">more
+        <span class="fa fa-caret-right"></span>
+    </a>
+</div>
+<div class="content grid">
+    {{range .Game}}
+    <a href="/category/game/item/{{.Id}}">
+        <div class="col-xs-4 show_content index_content">
+            <div class="index_img">
+                <img src="{{.Source}}img/game.png" data-src="{{.Source}}img/game.png" class="blur-up lazyload" onerror="this.src='//static.ifunnyhub.com/assets/loading.jpg'">
+                <div class="img_text">
+                    <small>{{.Title}}</small>
+                    <small class="num">
+                        <i class="fa fa-eye"></i> {{.Playnum}}</small>
+                </div>
+            </div>
+        </div>
+    </a>
+    {{end}}
+</div>

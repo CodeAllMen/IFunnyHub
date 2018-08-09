@@ -1,0 +1,40 @@
+<div class="title">
+    <p class="text-right font_gray">Approximately {{.Num}} results</p>
+</div>
+<!-- //pictures content -->
+<div class="content grid" id="pictures_bottom">
+    {{range .Data}}
+    <a href="/category/picture/item/{{.Id}}">
+        <div class="col-xs-6 show_content index_content">
+            <div class="index_img">
+                <img src="{{.Img}}" data-src="{{.Img}}" class="blur-up lazyload" onerror="this.src='//static.ifunnyhub.com/assets/loading.jpg'">
+                <div class="img_text">
+                    <small>{{.Title}}</small>
+                    <small>
+                        <i class="fa fa-eye"></i> {{.Playnum}}</small>
+                </div>
+            </div>
+        </div>
+    </a>
+    {{end}}
+</div>
+<!-- turn page in games page   -->
+<div class="pager col-xs-12">
+    {{if .pre}}
+    <a name="prev" id="games_prev" class="disabled" style="cursor: default;" href="/category/picture?page={{.prenum}}">
+        <i class="fa fa-caret-left"></i>
+    </a>
+    {{end}} {{range .page}} {{if ne 0 . }}
+    <span name="nav" id="games_nav" class="pagenum" style="cursor: pointer;">
+        <a class="navi" href="/category/picture?page={{.}}">
+            <span class="page_num">{{.}}</span>
+        </a>
+    </span>
+    {{else}}
+    <span>...</span>
+    {{end}} {{end}} {{if .next}}
+    <a name="next" id="games_next" class="" style="cursor: pointer;" href="/category/picture?page={{.nextnum}}">
+        <i class="fa fa-caret-right"></i>
+    </a>
+    {{end}}
+</div>

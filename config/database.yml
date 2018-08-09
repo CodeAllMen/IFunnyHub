@@ -1,4 +1,0 @@
-db:
-  adapter: sqlite
-  name: ./qor_example
-  user: root

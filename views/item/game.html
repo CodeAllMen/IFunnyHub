@@ -1,0 +1,72 @@
+<!-- games details -->
+<div class="container details_content" id="game_details">
+    <div class="details_left col-md-10 col-xs-12">
+        <div class="col-md-12 col-xs-12">
+            <img src="{{.Src}}img/top.png">
+        </div>
+        <div class="col-md-4 col-xs-4 img_sm">
+            <img src="{{.Src}}img/1.png">
+        </div>
+        <div class="col-md-4 col-xs-4 img_sm">
+            <img src="{{.Src}}img/2.png">
+        </div>
+        <div class="col-md-4 col-xs-4 img_sm">
+            <img src="{{.Src}}img/3.png">
+        </div>
+        <div class="img_text col-md-12 col-xs-12">
+            <div class="col-md-8 col-xs-8">
+                <h5>{{.Title}}</h5>
+                <p class="font_gray">
+                    <span>Added</span>
+                    <b>{{.Time}}</b>
+                </p>
+            </div>
+            <div class="col-md-4 col-xs-4 text-right" style="margin-top:10px;">
+                <a  href="{{.Src}}index.html" class="btn btn-blue">
+                    <b>Play Now</b>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="details_right col-md-2 col-xs-12">
+        <div class="detail_btn col-md-12 col-xs-6">
+            <a class="col-md-8 col-md-offset-2 col-xs-5 btn btn-yellow" href={{.last}}>
+                <b>Back</b>
+            </a>
+            <a class="col-md-8 col-md-offset-2 col-xs-5 btn btn-yellow" href={{.next}}>
+                <b>Next</b>
+            </a>
+        </div>
+        <div class="likes_icon col-md-12 col-xs-6">
+            <div class="like_up col-md-6 col-md-offset-3 col-xs-5">
+                <img class="col-xs-5" src="/static/img/up.png">
+                <h4 class="text-center col-xs-5">{{.Like}}</h4>
+            </div>
+            <div class="like_down col-md-6 col-md-offset-3 col-xs-5">
+                <img class="col-xs-5" src="/static/img/down.png">
+                <h4 class="text-center col-xs-5">{{.Dislike}}</h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-10 col-xs-12 img_bottom ">
+        <h6>You May Like</h6>
+        {{range .YouMaylike}}
+        <div class="col-md-3 col-xs-6">
+            <a href="/category/game/item/{{.Id}}">
+                <div class="img_likes">
+                    <div>
+                        <img src="{{.Source}}img/game.png" data-src="{{.Source}}img/game.png" class="blur-up lazyload" onerror="this.src='//static.ifunnyhub.com/assets/loading.jpg'">
+                    </div>
+                    <div class="likes_name">
+                        <p>{{.Title}}</p>
+                        <p class="font_gray">
+                            <span>{{.Playnum}}</span>Browse
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {{end}}
+    </div>
+</div>

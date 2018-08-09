@@ -1,0 +1,63 @@
+<!-- pictures details -->
+<div class="container details_content" id="pictures_details">
+    <div class="details_left col-md-10 col-xs-12">
+        <div class="col-md-12 col-xs-12 text-center">
+            <img class="pic_img" src="{{.Src}}">
+        </div>
+        <div class="img_text col-md-12 col-xs-12">
+            <h5>{{.Title}}</h5>
+            <div class="col-md-8 col-xs-8">
+                <p class="font_gray">
+                    <span>Added</span>
+                    <b>{{.Time}}</b>
+                </p>
+            </div>
+            <div class="col-md-4 col-xs-4 text-right">
+                <a href="{{.Src}}" download="{{.Id}}.png" class="btn">
+                    <i class="fa fa-cloud-download"></i>
+                    <small>Download</small>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="details_right col-md-2 col-xs-12">
+        <div class="detail_btn col-md-12 col-xs-6">
+            <a class="col-md-8 col-md-offset-2 col-xs-5 btn btn-yellow" href={{.last}}>
+                <b>Back</b>
+            </a>
+            <a class="col-md-8 col-md-offset-2 col-xs-5 btn btn-yellow" href={{.next}}>
+                <b>Next</b>
+            </a>
+        </div>
+        <div class="likes_icon col-md-12 col-xs-6">
+            <div class="like_up col-md-6 col-md-offset-3 col-xs-5">
+                <img class="col-xs-5" src="/static/img/up.png">
+                <h4 class="text-center col-xs-5">{{.Like}}</h4>
+            </div>
+            <div class="like_down col-md-6 col-md-offset-3 col-xs-5">
+                <img class="col-xs-5" src="/static/img/down.png">
+                <h4 class="text-center">{{.Dislike}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-10 col-xs-12 img_bottom ">
+        <h6>You May Like</h6>
+        {{range .YouMaylike}}
+        <a href="/category/picture/item/{{.Id}}">
+            <div class="col-md-3 col-xs-6">
+                <div class="img_likes">
+                    <div>
+                        <img src="{{.Img}}">
+                    </div>
+                    <div class="likes_name">
+                        <p>{{.Title}}</p>
+                        <p class="font_gray">
+                            <span>{{.Playnum}}</span>Browse
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </a>
+        {{end}}
+    </div>
+</div>
