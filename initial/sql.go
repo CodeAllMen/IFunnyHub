@@ -38,4 +38,5 @@ func init() {
 
 	// SqlToFile()
 	// FileToSql()
+	// GameToSql()
 }

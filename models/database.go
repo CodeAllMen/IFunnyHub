@@ -21,6 +21,7 @@ type Item struct {
 	Create   string `orm:"column(create);null"`
 	Like     int    `orm:"column(like);null"`
 	Dislike  int    `orm:"column(dislike);null"`
+	Url      string `orm:"column(url);null"`
 }
 
 type Users struct {
