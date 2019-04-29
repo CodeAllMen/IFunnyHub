@@ -1,9 +1,10 @@
 package main
 
 import (
+	"strings"
+
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/context"
-	"strings"
 
 	_ "github.com/MobileCPX/IFunnyHub/initial"
 	_ "github.com/MobileCPX/IFunnyHub/routers"
@@ -17,6 +18,6 @@ var FilterUser = func(ctx *context.Context) {
 }
 
 func main() {
-	beego.InsertFilter("/*", beego.BeforeRouter, FilterUser)
+	// beego.InsertFilter("/*", beego.BeforeRouter, FilterUser)
 	beego.Run()
 }

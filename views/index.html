@@ -121,9 +121,9 @@
         <div class="head_log">
           {{ if .Valid }}
           <span id="username">{{.UserName}}</span> |
-          <a id="signout" href="/logout"><i class="fa fa-sign-out"></i>Sign Out</a>
+          <a id="signout" href="/logout"><i class="fa fa-sign-out"></i>Disconnessione</a>
           {{else}}
-          <a href="/login" id="sign"> sign in </a>
+          <a href="/login" id="sign"> Registrati </a>
           {{ end }}
         </div>
       </div>
@@ -134,31 +134,31 @@
           <li role="presentation" class="active col-xs-2">
             <a href="/" class="home" id="home">
               <i class="icon_h"></i>
-              <b>HOME </b>
+              <b>CASA </b>
             </a>
           </li>
           <li role="presentation" class="active col-xs-2">
             <a href="/category/video" class="videos" id="videos">
               <i class="icon_v"></i>
-              <b>VIDEOS </b>
+              <b>VIDEO </b>
             </a>
           </li>
           <li role="presentation" class="active col-xs-2">
             <a href="/category/picture" class="pictures" id="pictures">
               <i class="icon_p"></i>
-              <b>PICTURES </b>
+              <b>IMMAGINI </b>
             </a>
           </li>
           <li role="presentation" class="active col-xs-2">
             <a href="/category/ringtone" class="ring" id="ring">
               <i class="icon_r"></i>
-              <b>RINGTONES </b>
+              <b>SUONERIE </b>
             </a>
           </li>
           <li role="presentation" class="active col-xs-2">
             <a href="/category/game" class="games" id="games">
               <i class="icon_g"></i>
-              <b>GAMES </b>
+              <b>GIOCHI </b>
             </a>
           </li>
         </ul>
@@ -179,6 +179,9 @@
       </div> -->
       {{.LayoutContent}}
       </div>
+      <div style="text-align:center;font-size:15px;margin:15px;" class="footer-div">
+        <a href="/ifunny/home">Gestione Servizi</a>
+    </div>
   </body>
 </body>
 <script src="/static/js/jquery.min.js"></script>
