@@ -37,6 +37,6 @@ func init() {
 	orm.DefaultRowsLimit = -1
 
 	// SqlToFile()
-	// FileToSql()
+	FileToSql()
 	// GameToSql()
 }

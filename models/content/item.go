@@ -1,6 +1,7 @@
 package content
 
 import (
+	"fmt"
 	"strconv"
 
 	"github.com/MobileCPX/IFunnyHub/models"
@@ -9,7 +10,7 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-//所有item数量
+// 所有item数量
 func GetAllItemNum(position int) (string, int) {
 	var filter string
 	if position == 0 {
@@ -23,7 +24,7 @@ func GetAllItemNum(position int) (string, int) {
 	return utils.NumToString(num), num
 }
 
-//通过positison获取所有item
+// 通过positison获取所有item
 func GetAllItemlByPosition(position, page int) (int64, []models.Item) {
 	o := orm.NewOrm()
 	itms := []models.Item{}
@@ -35,11 +36,12 @@ func GetAllItemlByPosition(position, page int) (int64, []models.Item) {
 	return num, itms
 }
 
-//通过position获取五个item
+// 通过position获取五个item
 func GetFiveItemlByPosition(position int) (int64, []models.Item) {
 	o := orm.NewOrm()
 	itms := []models.Item{}
 	_, item_num := GetAllItemNum(position)
+	fmt.Println(item_num)
 	item_start := utils.Rand(item_num)
 	num, err := o.QueryTable("item").Filter("position", position).Limit(5).Offset(item_start).All(&itms)
 	if err != nil {
@@ -49,7 +51,7 @@ func GetFiveItemlByPosition(position int) (int64, []models.Item) {
 	return num, itms
 }
 
-//获取单个item
+// 获取单个item
 func GetItemlById(id string) models.Item {
 	o := orm.NewOrm()
 	itms := models.Item{}
@@ -59,7 +61,7 @@ func GetItemlById(id string) models.Item {
 	return itms
 }
 
-//获取附近的id
+// 获取附近的id
 func GetItemlRound(id, cat, action string) string {
 	o := orm.NewOrm()
 	itms := models.Item{}
@@ -94,7 +96,7 @@ func GetItemlRound(id, cat, action string) string {
 	return strconv.Itoa(itms.Id)
 }
 
-//获取四个随机item
+// 获取四个随机item
 func GetRandomItem(position int, id string) []models.Item {
 	o := orm.NewOrm()
 	itms := []models.Item{}
